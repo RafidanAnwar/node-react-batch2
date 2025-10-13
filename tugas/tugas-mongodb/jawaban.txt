@@ -1,0 +1,95 @@
+// ===================================
+// Jawaban Tugas MongoDB
+// ===================================
+
+// Soal 1: Membuat Database
+use myshop;
+
+// ===================================
+
+// Soal 2: Membuat collection dan Memasukkan Data
+
+// 2.1 Memasukkan data ke dalam collection 'users'
+db.users.insertMany([
+  {
+    name: "John Doe",
+    email: "john@doe.com",
+    password: "john123"
+  },
+  {
+    name: "Jane Doe",
+    email: "jane@doe.com",
+    password: "jenita123"
+  }
+]);
+
+// 2.2 Memasukkan data ke dalam collection 'items'
+db.items.insertMany([
+  {
+    name: "Sumsang b50",
+    description: "hape keren dari merek sumsang",
+    price: 4000000,
+    stock: 100
+  },
+  {
+    name: "Uniklooh",
+    description: "baju keren dari brand ternama",
+    price: 500000,
+    stock: 50
+  },
+  {
+    name: "IMHO Watch",
+    description: "jam tangan anak yang jujur banget",
+    price: 2000000,
+    stock: 10
+  }
+]);
+
+// 2.3 Memasukkan data ke dalam collection 'categories'
+db.categories.insertMany([
+  { name: "gadget" },
+  { name: "cloth" },
+  { name: "men" },
+  { name: "women" },
+  { name: "branded" }
+]);
+
+// ===================================
+// Soal 3: Mengambil Data dari Database
+// ===================================
+
+// 3.1 Mengambil data users (tanpa password)
+db.users.find({}, { password: 0 });
+
+// 3.2 Mengambil data items
+
+// a) Mengambil item dengan harga di atas 1.000.000
+db.items.find({
+  price: { $gt: 1000000 }
+});
+
+// b) Mengambil item dengan nama yang mirip (like)
+// Pilihan 1: Mengandung kata "uniklo"
+db.items.find({
+  name: { $regex: /uniklo/i }
+});
+
+// Pilihan 2: Mengandung kata "watch"
+db.items.find({
+  name: { $regex: /watch/i }
+});
+
+// Pilihan 3: Mengandung kata "sang"
+db.items.find({
+  name: { $regex: /sang/i }
+});
+
+// ===================================
+// Soal 4: Mengubah Data dari Database
+// ===================================
+
+// Mengubah harga item 'Sumsang b50' menjadi 2.500.000
+db.items.updateOne(
+  { name: "Sumsang b50" }, // Filter untuk mencari dokumen
+  { $set: { price: 2500000 } } // Aksi pembaruan
+);

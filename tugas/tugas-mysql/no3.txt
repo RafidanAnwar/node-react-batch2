@@ -1,0 +1,75 @@
+# Soal 3
+# Query 1 tampilkan seluruh data post yang di tulis oleh john doe
+SELECT
+    bp.*
+FROM
+    BLOG_POSTS bp
+JOIN
+    USERS u ON bp.author_id = u.id
+WHERE
+    u.name = 'John Doe';
+    
+# Query 2: Tampilkan category name, post title, author name yang memiliki category basic saja
+SELECT
+    c.name AS category_name,
+    bp.title AS post_title,
+    u.name AS author_name
+FROM
+    BLOG_POSTS bp
+JOIN
+    USERS u ON bp.author_id = u.id
+JOIN
+    POST_CATEGORIES pc ON bp.id = pc.post_id
+JOIN
+    CATEGORIES c ON pc.category_id = c.id
+WHERE
+    c.name = 'Basic';
+    
+# Query 3: Tampilkan category name, post title, dan body yang ditulis oleh Robert dan Frank
+SELECT
+    c.name AS category_name,
+    bp.title AS post_title,
+    bp.body,
+    u.name AS author_name
+FROM
+    BLOG_POSTS bp
+JOIN
+    USERS u ON bp.author_id = u.id
+LEFT JOIN
+    POST_CATEGORIES pc ON bp.id = pc.post_id
+LEFT JOIN
+    CATEGORIES c ON pc.category_id = c.id
+WHERE
+    u.name IN ('Robert', 'Frank');
+    
+# Query 4: Tampilkan nama penulis dan nama category untuk artikel yang memiliki lebih dari atau sama dengan dua category
+SELECT
+    u.name AS author_name,
+    GROUP_CONCAT(c.name SEPARATOR ', ') AS categories
+FROM
+    USERS u
+JOIN
+    BLOG_POSTS bp ON u.id = bp.author_id
+JOIN
+    POST_CATEGORIES pc ON bp.id = pc.post_id
+JOIN
+    CATEGORIES c ON pc.category_id = c.id
+GROUP BY
+    bp.id, u.name
+HAVING
+    COUNT(pc.category_id) >= 2;
+    
+# Query 5: Tampilkan nama penulis dan pos title untuk artikel yang memilik hanya 1 category saja
+SELECT
+    u.name AS author_name,
+    bp.title AS post_title
+FROM
+    BLOG_POSTS bp
+JOIN
+    USERS u ON bp.author_id = u.id
+JOIN
+    POST_CATEGORIES pc ON bp.id = pc.post_id
+GROUP BY
+    bp.id, u.name, bp.title
+HAVING
+    COUNT(pc.category_id) = 1;
