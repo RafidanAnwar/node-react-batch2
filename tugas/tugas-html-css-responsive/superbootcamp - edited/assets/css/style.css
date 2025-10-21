@@ -241,3 +241,61 @@ footer {
     /* Properti dari petunjuk asli */
     transform: scale(1.1);
 }
+
+/* Halaman: index.html (Describe Section) */
+#container-describe {
+    background-color: #fff;
+    padding: 40px 0;
+    margin-top: 20px;
+    /* Memberi jarak dari hero section */
+}
+
+.describe-content {
+    display: flex;
+    align-items: stretch;
+    /* Membuat kedua kotak sama tinggi */
+    gap: 30px;
+    /* Jarak antara dua kotak */
+}
+
+.describe-left {
+    flex-basis: 35%;
+    /* Lebar kotak kiri */
+    background-color: #203239;
+    /* Warna gelap sesuai gambar */
+    color: white;
+
+    /* Posisikan ikon di tengah */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.describe-left .fa-thumbs-up {
+    font-size: 10em;
+    /* Ukuran ikon besar */
+}
+
+.describe-right {
+    flex-basis: 65%;
+    /* Lebar kotak kanan */
+    border: 3px solid #203239;
+    /* Border gelap tebal */
+    padding: 30px;
+
+    /* Posisikan teks di tengah secara vertikal */
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.describe-right p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    /* Hapus margin default paragraf */
+}
