@@ -1,0 +1,243 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    /* Warna latar belakang umum */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header / Navbar */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+
+    /* Properti dari petunjuk */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header .container {
+    /* Properti dari petunjuk */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .header-logo img {
+    vertical-align: middle;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+header nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Main Content */
+main {
+    /* Beri padding atas seukuran header agar konten tidak tertutup */
+    padding-top: 100px;
+    padding-bottom: 40px;
+    min-height: calc(100vh - 140px);
+    /* Kalkulasi agar footer pas di bawah */
+}
+
+/* Halaman: index.html (Hero Section) */
+#container-hero {
+    background-color: #fff;
+    padding: 40px 0;
+}
+
+.container-hero-content {
+    /* Properti dari petunjuk */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-hero-headline h1 {
+    font-size: 2.5em;
+    color: #203239;
+    /* Kode warna dari petunjuk */
+    margin: 5px 0;
+}
+
+.container-hero-headline p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.container-hero-headline .social-links a {
+    color: #203239;
+    font-size: 24px;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.container-hero-image img {
+    max-width: 450px;
+}
+
+/* Halaman: riwayat-pribadi.html (History/Table) */
+.container-history {
+    background-color: #fff;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container-history_motto p {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.container-history_motto p:first-child {
+    font-weight: bold;
+    color: #203239;
+}
+
+.container-history_table h2 {
+    color: #203239;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.container-history_table table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Menyatukan border */
+    margin-top: 15px;
+}
+
+.container-history_table th,
+.container-history_table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.container-history_table th {
+    background-color: #f9f9f9;
+    width: 25%;
+    /* Lebar kolom header */
+    font-weight: bold;
+}
+
+/* Halaman: portofolio.html (Gallery) */
+.portfolio-title {
+    text-align: center;
+    font-size: 2em;
+    color: #203239;
+    margin-bottom: 30px;
+}
+
+.portfolio-gallery {
+    /* Properti dari petunjuk */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    /* Jarak antar gambar */
+}
+
+.portfolio-item {
+    width: 30%;
+    /* 3 gambar per baris */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    /* Agar gambar tidak keluar dari border-radius */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item img {
+    width: 100%;
+    display: block;
+    /* Properti dari petunjuk */
+    transition: transform 0.3s ease;
+    /* Transisi untuk hover */
+}
+
+.portfolio-item img:hover {
+    /* Properti dari petunjuk */
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background-color: #203239;
+    /* Kode warna dari petunjuk */
+    color: white;
+    text-align: center;
+    /* Properti dari petunjuk (padding atas/bawah 20px, kiri/kanan 40px) */
+    padding: 20px 40px;
+}
+
+/* Halaman: portofolio.html (Gallery) */
+.portfolio-title {
+    text-align: center;
+    font-size: 2em;
+    color: #203239;
+    margin-bottom: 30px;
+}
+
+.container-wrapping__card {
+    /* Ini adalah flex container baru */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    /* Jarak antar gambar */
+}
+
+.container-wrapping__card img {
+    /* Ini adalah item-itemnya */
+    width: 30%;
+    /* 3 gambar per baris */
+    height: 250px;
+    /* Menyamakan tinggi gambar */
+    object-fit: cover;
+    /* Mencegah gambar penyet/stretch */
+
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    /* Properti dari petunjuk asli */
+    transition: transform 0.3s ease;
+}
+
+.container-wrapping__card img:hover {
+    /* Properti dari petunjuk asli */
+    transform: scale(1.1);
+}

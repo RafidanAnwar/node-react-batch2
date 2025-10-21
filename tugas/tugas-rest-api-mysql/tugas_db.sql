@@ -1,4 +1,4 @@
-CREATE DATABASE tugas_db;
+gitCREATE DATABASE tugas_db;
 
 USE tugas_db;
 
