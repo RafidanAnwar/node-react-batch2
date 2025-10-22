@@ -2,18 +2,118 @@
     margin: 0px;
     padding: 0px;
     list-style: none;
+    /* Menambahkan box-sizing agar padding tidak mempengaruhi lebar */
+    box-sizing: border-box;
+}
+
+/* Mengatur font dasar agar lebih rapi */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    /* Memberi sedikit warna latar */
 }
 
 
 /* Buatlah styling section top dibawah ini */
+.top {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
 
+.top h2 {
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.top .icon i {
+    font-size: 1.5rem;
+    /* Ukuran icon */
+    margin: 0 12px;
+    /* Jarak antar icon */
+    color: #555;
+}
 
 
 /* Buatlah styling section container dan card dibawah ini */
 
-.container{
+.container {
+    padding: 20px;
+    display: grid;
+    /* Mobile-First (Default): 1 kolom.
+      Sesuai permintaan soal poin 3.
+    */
+    grid-template-columns: 1fr;
+    gap: 20px;
+    /* Jarak antar card */
+}
 
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    /* Membuat sudut card melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Efek bayangan */
+    overflow: hidden;
+    /* Memastikan gambar tidak keluar dari border-radius */
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    /* Gambar memenuhi lebar card */
+    height: auto;
+    /* Tinggi gambar otomatis */
+    display: block;
+}
+
+.card .description {
+    padding: 20px;
+}
+
+.card .description h2 {
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.card .description small {
+    display: block;
+    margin-bottom: 15px;
+    color: #777;
+    font-style: italic;
+}
+
+.card .description p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #333;
 }
 
 
 /* Aturlah breakpoint dibawah ini menggunakan media queries agar responsive */
+
+/* 1. Breakpoint untuk Tablet 
+  Sesuai permintaan soal poin 2: 2 kolom.
+*/
+@media (min-width: 768px) {
+    .container {
+        /* Mengubah grid menjadi 2 kolom */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 2. Breakpoint untuk Desktop 
+  Sesuai permintaan soal poin 1: 3 kolom.
+*/
+@media (min-width: 1024px) {
+    .container {
+        /* Mengubah grid menjadi 3 kolom */
+        grid-template-columns: repeat(3, 1fr);
+
+        /* Tambahan: agar di layar sangat lebar tidak terlalu melebar */
+        max-width: 1200px;
+        margin: 0 auto;
+        /* Menengahkan container di desktop */
+    }
+}
