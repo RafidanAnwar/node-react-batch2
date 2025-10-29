@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Kategori untuk produk
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  products Product[]
+}
+
+// Produk utama (basis crepes atau kentang)
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  basePrice   Int // Harga dasar (misal: adonan crepes saja)
+  imageUrl    String?
+  description String?
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  // Daftar topping yang tersedia untuk produk ini
+  availableToppings ProductTopping[]
+}
+
+// Pilihan Topping
+model Topping {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  price Int // Harga tambahan untuk topping ini
+
+  // Daftar produk di mana topping ini bisa digunakan
+  availableOnProducts ProductTopping[]
+}
+
+// Tabel penghubung Many-to-Many
+// Menghubungkan Produk dengan Topping yang tersedia untuknya
+model ProductTopping {
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  topping   Topping @relation(fields: [toppingId], references: [id])
+  toppingId Int
+
+  @@id([productId, toppingId]) // Kunci primer gabungan
+}
+
+// MODEL BARU: Order (Pesanan)
+model Order {
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  totalPrice  Int       // Total harga keseluruhan pesanan
+  
+  // Relasi: Satu Order punya BANYAK OrderItem
+  items       OrderItem[]
+}
+
+// MODEL BARU: OrderItem (Item di dalam Pesanan)
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  
+  // Informasi "Snapshot" (dicatat saat pembelian)
+  // Kita tidak link ke Product, agar data historis aman
+  // jika produk aslinya dihapus atau harganya diubah.
+  productName   String
+  basePrice     Int
+  totalPrice    Int     // Harga item ini (termasuk topping)
+  
+  // Simpan daftar topping sebagai teks
+  // cth: "Coklat, Keju, Pisang"
+  toppingsList  String? @db.Text
+  
+  // Relasi: Satu OrderItem milik SATU Order
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   Int
+}

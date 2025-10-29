@@ -1,0 +1,122 @@
+/* Global Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 400px;
+  /* Lebar maksimal agar tidak terlalu lebar di desktop */
+}
+
+/* --- Timer Styling --- */
+.timer-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.current-time {
+  font-size: 2em;
+  /* Ukuran font disesuaikan agar mirip */
+  font-weight: bold;
+  margin: 0;
+}
+
+.countdown {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+/* --- To-Do List Styling --- */
+.todo-container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  /* Text-align left untuk konten di dalam list */
+  text-align: left;
+}
+
+.logo {
+  display: block;
+  /* Agar bisa di-margin auto */
+  margin: 0 auto 20px auto;
+  /* Centering logo */
+  width: 200px;
+  /* Ukuran logo disesuaikan */
+}
+
+.todo-title {
+  text-align: center;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.todo-subtitle {
+  text-align: center;
+  margin: 0 0 20px 0;
+  color: #888;
+  font-size: 0.9em;
+  border-bottom: 1px solid #eee;
+  /* Garis pemisah */
+  padding-bottom: 20px;
+}
+
+.todo-list {
+  list-style-type: none;
+  /* Hilangkan bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1em;
+}
+
+.todo-item input[type="checkbox"] {
+  /* Style checkbox agar lebih besar dan mudah diklik */
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.todo-item label {
+  color: #555;
+  flex: 1;
+  /* Agar label mengambil sisa ruang */
+}
+
+.send-button {
+  background-color: #0099ff;
+  /* Warna biru */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  width: 100%;
+  /* Tombol full-width */
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+  background-color: #007acc;
+  /* Warna biru lebih gelap saat hover */
+}
